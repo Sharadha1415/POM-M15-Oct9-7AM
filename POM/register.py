@@ -225,6 +225,63 @@ STEP6
 #         # self.driver.find_element('id', 'ConfirmPassword').send_keys(pwd)
 #         self.driver.find_element(*r_loc.confirm_password).send_keys(pwd)
 
+# ########################################################################################
+#
+'''
+STEP6
+'''
+#
+# from object_repository.reg_locators import RegisterLocators
+#
+# r_loc = RegisterLocators()
+#
+# class SeleniumWrapper:
+#
+#     def __init__(self, driver):
+#         self.driver = driver
+#
+#     def click_on_ele(self, var_name):
+#         self.driver.find_element(*var_name).click()
+#
+#     def enter_data(self, var_name, data):
+#         self.driver.find_element(*var_name).send_keys(data)
+#
+#
+# class Register:
+#
+#     def __init__(self, driver):
+#         self.driver = driver        ## self.driver --> driver --> webdriver.Chrome(opts)
+#         self.wrap_obj = SeleniumWrapper(driver)
+#
+#     def click_on_reg_link(self):
+#         # self.driver.find_element(*r_loc.reg_link).click()
+#         self.wrap_obj.click_on_ele(r_loc.reg_link)
+#
+#     def click_on_gender_btn(self):
+#         # self.driver.find_element(*r_loc.gender_btn).click()
+#         self.wrap_obj.click_on_ele(r_loc.gender_btn)
+#
+#     def enter_firstname(self, fname):
+#         # self.driver.find_element(*r_loc.firstname).send_keys(fname)
+#         self.wrap_obj.enter_data(r_loc.firstname, fname)
+#
+#     def enter_lastname(self, lname):
+#         # self.driver.find_element(*r_loc.lastname).send_keys(lname)
+#         self.wrap_obj.enter_data(r_loc.lastname, lname)
+#
+#     def enter_reg_email(self, email):
+#         # self.driver.find_element(*r_loc.reg_email).send_keys(email)
+#         self.wrap_obj.enter_data(r_loc.reg_email, email)
+#
+#     def enter_reg_pwd(self, pwd):
+#         # self.driver.find_element(*r_loc.reg_pwd).send_keys(pwd)
+#         self.wrap_obj.enter_data(r_loc.reg_pwd, pwd)
+#
+#     def enter_confirm_pwd(self, pwd):
+#         # self.driver.find_element(*r_loc.confirm_password).send_keys(pwd)
+#         self.wrap_obj.enter_data(r_loc.confirm_password, pwd)
+#
+
 ########################################################################################
 
 '''
@@ -232,46 +289,36 @@ STEP6
 '''
 
 from object_repository.reg_locators import RegisterLocators
+from generic_utilities.selenium_wrapper import SeleniumWrapper
 
 r_loc = RegisterLocators()
 
 class Register:
 
     def __init__(self, driver):
-        self.driver = driver  ## self.driver --> driver --> webdriver.Chrome(opts)
+        self.driver = driver        ## self.driver --> driver --> webdriver.Chrome(opts)
+        self.wrap_obj = SeleniumWrapper(driver)
 
     def click_on_reg_link(self):
-        self.driver.find_element(*r_loc.reg_link).click()
+        self.wrap_obj.click_on_ele(r_loc.reg_link)
 
     def click_on_gender_btn(self):
-        self.driver.find_element(*r_loc.gender_btn).click()
+        self.wrap_obj.click_on_ele(r_loc.gender_btn)
 
     def enter_firstname(self, fname):
-        self.driver.find_element(*r_loc.firstname).send_keys(fname)
+        self.wrap_obj.enter_data(r_loc.firstname, fname)
 
     def enter_lastname(self, lname):
-        self.driver.find_element(*r_loc.lastname).send_keys(lname)
+        self.wrap_obj.enter_data(r_loc.lastname, lname)
 
     def enter_reg_email(self, email):
-        self.driver.find_element(*r_loc.reg_email).send_keys(email)
+        self.wrap_obj.enter_data(r_loc.reg_email, email)
 
     def enter_reg_pwd(self, pwd):
-        self.driver.find_element(*r_loc.reg_pwd).send_keys(pwd)
+        self.wrap_obj.enter_data(r_loc.reg_pwd, pwd)
 
     def enter_confirm_pwd(self, pwd):
-        self.driver.find_element(*r_loc.confirm_password).send_keys(pwd)
-
-
-
-
-
-
-
-
-
-
-
-
+        self.wrap_obj.enter_data(r_loc.confirm_password, pwd)
 
 
 

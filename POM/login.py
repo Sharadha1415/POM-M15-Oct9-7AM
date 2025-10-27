@@ -158,6 +158,48 @@ STEP6
 #         # self.driver.find_element('id', 'Password').send_keys(pwd)
 #         self.driver.find_element(*l_loc.login_pwd).send_keys(pwd)
 
+# ######################################################################################
+
+'''
+STEP6
+'''
+#
+# from object_repository.login_locators import LoginLocators
+#
+# l_loc = LoginLocators()
+#
+# class SeleniumWrapper:
+#
+#     def __init__(self, driver):
+#         self.driver = driver
+#
+#     def click_on_ele(self, var_name):
+#         self.driver.find_element(*var_name).click()
+#
+#     def enter_data(self, var_name, data):
+#         self.driver.find_element(*var_name).send_keys(data)
+#
+# class Login:
+#
+#     def __init__(self, driver):
+#         self.driver = driver            ## self.driver --> driver --> webdriver.Chrome(opts)
+#         self.wrap_obj = SeleniumWrapper(driver)
+#
+#     def click_on_login_link(self):
+#         # self.driver.find_element(*l_loc.login_link).click()
+#         self.wrap_obj.click_on_ele(l_loc.login_link)
+#
+#     def enter_login_email(self, email):
+#         # self.driver.find_element(*l_loc.login_email).send_keys(email)
+#         self.wrap_obj.enter_data(l_loc.login_email, email)
+#
+#     def enter_login_pwd(self, pwd):
+#         # self.driver.find_element(*l_loc.login_pwd).send_keys(pwd)
+#         self.wrap_obj.enter_data(l_loc.login_pwd, pwd)
+#
+#
+
+
 ######################################################################################
 
 '''
@@ -165,6 +207,7 @@ STEP6
 '''
 
 from object_repository.login_locators import LoginLocators
+from generic_utilities.selenium_wrapper import SeleniumWrapper
 
 l_loc = LoginLocators()
 
@@ -172,17 +215,16 @@ class Login:
 
     def __init__(self, driver):
         self.driver = driver            ## self.driver --> driver --> webdriver.Chrome(opts)
+        self.wrap_obj = SeleniumWrapper(driver)
 
     def click_on_login_link(self):
-        self.driver.find_element(*l_loc.login_link).click()
+        self.wrap_obj.click_on_ele(l_loc.login_link)
 
     def enter_login_email(self, email):
-        self.driver.find_element(*l_loc.login_email).send_keys(email)
+        self.wrap_obj.enter_data(l_loc.login_email, email)
 
     def enter_login_pwd(self, pwd):
-        self.driver.find_element(*l_loc.login_pwd).send_keys(pwd)
-
-
+        self.wrap_obj.enter_data(l_loc.login_pwd, pwd)
 
 
 
